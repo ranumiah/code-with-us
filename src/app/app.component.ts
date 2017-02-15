@@ -64,5 +64,5 @@ export class AppComponent {
   counties = ['Northumberland', 'Lincolnshire', 'Hampshire', 'Shropshire', 'Greater London'];
   regions = ['North', 'East', 'South', 'West', 'Capital'];
   customer: Customer;
-  hideAdress = false;
+  showAddress = true;
 }

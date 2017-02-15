@@ -17,12 +17,13 @@
         <br />
 
         <fieldset>
-            <label>Name: <input [(ngModel)]="customer.name"></label>
+            <label>Name: <input [(ngModel)]="customer.name" placeholder="Customer name"></label>
         </fieldset>
 
-        <label><input type="checkbox" [(ngModel)]="hideAdress"> Hide Address</label>
+        <label><input type="checkbox" [(ngModel)]="showAddress">Show Address</label>
 
-        <div [hidden]="hideAdress">
+        <div *ngIf="showAddress">
+            <h3>Address:</h3>
             <fieldset>
                 <label>Street: <input [(ngModel)]="customer.address.street"></label>
             </fieldset>
