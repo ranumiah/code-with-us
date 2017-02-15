@@ -4,46 +4,26 @@ import { Component } from '@angular/core';
   selector: 'my-app',  // to use me, do this in html <my-app>
   template: `
   <h1>{{name}}</h1>
-  <p><i>{{name}} is in the {{region}} region</i></p>
+
+  <p><i>{{name}} is at {{street}} in {{city}} in the {{region}} region</i></p>
   <br />
 
   <fieldset>
-    <label>Name: </label><br/>
-    <input [value]="name"><br/> <!-- One Way Binding -->
-
-    <!-- Two Different Approach Doing Two Way Binding -->
-    <input #namebox [value]="name" (input)="name=namebox.value"><br/>
-    <input [value]="name" (input)="name=$event.target.value"><br/>
-    
-    <input [value]="name" (keyup)="name=$event.target.value"><br/> <!-- Two Way Binding -->
-
-    <!-- Two Way Binding after pressing the ENTER ONLY-->
-    <input [value]="name" (keyup.enter)="name=$event.target.value"><br/>
-
-    <!-- Two Way Binding after pressing the ENTER OR LOST FOCUS-->
-    <input [value]="name"
-          (keyup.enter)="name=$event.target.value"
-          (blur)="name=$event.target.value"
-    ><br/>
-
-    <input [(ngModel)]="name"><br/> <!-- Same As Line 13 & 14 -->
-    <input [ngModel]="name" (ngModelChange)="name=$event"><br/> <!-- Two Way Binding -->
+    <label>Name: <input [(ngModel)]="name"></label>
   </fieldset>
 
-  <!-- Two Different Approach Doing The Same -->
-  <button (click)="addressClick()">Show/Hide Address</button>
   <label><input type="checkbox" [(ngModel)]="hideAdress"> Hide Address</label>
 
   <div [hidden]="hideAdress" >
     <fieldset>
-      <label>Street: </label>{{street}}
+      <label>Street: <input [(ngModel)]="street"></label>
     </fieldset>
     <fieldset>
-      <label>City: {{city}}</label>
+      <label>City: <input [(ngModel)]="city"></label>
     </fieldset>
     <fieldset>
       <label>Region: </label>
-      <select (change)="regionChange($event.target.value)">
+      <select [(ngModel)]="region">
         <option>North</option>
         <option>East</option>
         <option>South</option>
@@ -60,12 +40,4 @@ export class AppComponent {
   city = "London";
   region = "South";
   hideAdress = false;
-
-  addressClick() {
-    this.hideAdress = !this.hideAdress;
-  }
-
-  regionChange(region: string) {
-    this.region = region;
-  }
 }
