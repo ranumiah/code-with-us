@@ -10,7 +10,7 @@
     </ul>
 
     <!-- Details begin here -->
-    <div>
+    <div *ngIf="customer">
         <h1>{{customer.name}}</h1>
 
         <p><i>{{customer.name}} in the {{customer.address.region}} region at {{customer.address.street}}, {{customer.address.city}}, {{customer.address.county}}</i></p>

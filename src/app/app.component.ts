@@ -62,6 +62,6 @@ export class AppComponent {
     },
   ];
   regions = ['North', 'East', 'South', 'West', 'Capital'];
-  customer: Customer = this.customers[0];
+  customer: Customer;
   hideAdress = false;
 }
