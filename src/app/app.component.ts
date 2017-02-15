@@ -5,6 +5,8 @@ import { Component } from '@angular/core';
   template: `
   <h1>{{name}}</h1>
 
+  <p><i>{{name}} is in the {{region}} region</i></p>
+
   <div>
     <fieldset>
       <img src={{image}}>
@@ -26,6 +28,25 @@ import { Component } from '@angular/core';
       <option>yellow</option>
     </select>
   </div>
+
+  <br>
+  <br>
+
+  <button (click)="addressClick()">Show/Hide Address</button>
+  <div [hidden]="hideAdress" >
+    <label>Region: </label>
+    <select (change)="regionChange($event.target.value)">
+      <option>North</option>
+      <option>East</option>
+      <option>South</option>
+      <option>West</option>
+    </select>
+    <fieldset>
+      <label>Street: </label>{{street}}
+      <br>
+      <label>City: {{city}}</label>
+    </fieldset>
+  </div>
   `,
 })
 
@@ -33,6 +54,10 @@ export class AppComponent {
   name = 'Wu Joe';
   image = 'favicon.ico';
   colour = 'red';
+  street = "Baker Street";
+  city = "London";
+  region = "South";
+  hideAdress = false;
 
   clicked() {
     this.colour = this.colour === 'red' ? 'blue' : 'red';
@@ -40,5 +65,13 @@ export class AppComponent {
 
   colourChange(colour: string) {
     this.colour = colour;
+  }
+
+  addressClick() {
+    this.hideAdress = !this.hideAdress;
+  }
+
+  regionChange(region: string) {
+    this.region = region;
   }
 }
