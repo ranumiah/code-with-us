@@ -32,18 +32,16 @@
             <fieldset>
                 <label>Region: </label>
                 <select [(ngModel)]="customer.address.region">
-        <option *ngFor="let region of regions">{{region}}</option>
-      </select>
+                    <option *ngFor="let region of regions">{{region}}</option>
+                </select>
             </fieldset>
             <fieldset>
-                <label>County: </label>
-                <select [(ngModel)]="customer.address.county">
-        <option>Northumberland</option>
-        <option>Lincolnshire</option>
-        <option>Hampshire</option>
-        <option>Shropshire</option>
-        <option>Greater London</option>
-      </select>
+                <div *ngIf="county">
+                    <label>County: </label>
+                    <select [(ngModel)]="customer.address.county">
+                        <option *ngFor="let county of counties">{{county}}</option>
+                    </select>
+                </div>
             </fieldset>
         </div>
     </div>
