@@ -1,0 +1,24 @@
+<!-- Guard against missing address (defensive programming) -->
+<div *ngIf="Address">
+    <h3>Address:</h3>
+    <fieldset>
+        <label>Street: <input [(ngModel)]="address.street"></label>
+    </fieldset>
+    <fieldset>
+        <label>City: <input [(ngModel)]="address.city"></label>
+    </fieldset>
+    <fieldset>
+        <label>Region: </label>
+        <select [(ngModel)]="address.region">
+                    <option *ngFor="let region of regions">{{region}}</option>
+                </select>
+    </fieldset>
+    <fieldset>
+        <div *ngIf="county">
+            <label>County: </label>
+            <select [(ngModel)]="address.county">
+                        <option *ngFor="let county of counties">{{county}}</option>
+                    </select>
+        </div>
+    </fieldset>
+</div>
